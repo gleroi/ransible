@@ -1,0 +1,8 @@
+---
+
+- name: Test de ex1
+  hosts: all
+  tasks:
+    - ex1:
+        plop: "Coucou !"
+
