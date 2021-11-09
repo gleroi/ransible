@@ -19,6 +19,7 @@ function activate {
 
 function build {
 	modules=$(find modules_rs -mindepth 1 -maxdepth 1 -type d)
+	set +o errexit
 	for module in $modules; do
 		cargo install --bins --path $module --root $LIBRARY_DIR
 	done
