@@ -18,11 +18,14 @@ function activate {
 }
 
 function build {
-	cargo install --path ex1 --root $LIBRARY_DIR
+	modules=$(find modules_rs -mindepth 1 -maxdepth 1 -type d)
+	for module in $modules; do
+		cargo install --bins --path $module --root $LIBRARY_DIR
+	done
 }
 
 function playbook {
-	ansible-playbook -i inventory.yml playbook.yml
+	ansible-playbook -i inventory.yml -v playbook.yml
 }
 
 $*
